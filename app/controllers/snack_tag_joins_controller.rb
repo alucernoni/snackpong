@@ -1,0 +1,2 @@
+class SnackTagJoinsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class XpJoinersController < ApplicationController
+end
