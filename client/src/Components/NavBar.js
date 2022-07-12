@@ -16,6 +16,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
+
 
 
 
@@ -91,6 +93,9 @@ function NavBar() {
                     inputProps={{ 'aria-label': 'search' }}
                   />
                 </Search>
+                <IconButton>
+                <Avatar alt="SnackPong" src="/static/images/avatar/2.jpg" />
+              </IconButton>
               </Toolbar>
         </AppBar>
    </Stack> 

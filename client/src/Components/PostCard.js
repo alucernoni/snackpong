@@ -5,8 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined';
+import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined';
 
-function PostCard({post}) {
+
+function PostCard({postList}) {
+
 
     const bull = (
         <Box
@@ -17,34 +21,52 @@ function PostCard({post}) {
         </Box>
       );
       
-      const card = (
-        <React.Fragment>
-          <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Word of the Day
-            </Typography>
-            <Typography variant="h5" component="div">
-              be{bull}nev{bull}o{bull}lent
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
-            </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </React.Fragment>
-      );
-  
         return (
-          <Box sx={{ minWidth: 275 }}>
-            <Card variant="outlined">{card}</Card>
+            <div className="post-cards">
+            <React.Fragment>
+            <CardContent>
+
+              <Typography variant="h6" component="div">
+                {postList.title}
+              </Typography>
+  
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                {postList.content}
+              </Typography>
+  
+              <Typography sx={{ mb: 0 }} color="text.secondary">
+                <img 
+                className="xp-up"
+                src="https://cdn-images-1.medium.com/max/800/1*kIv0TNBYlRLGg8F72lHC3A.png"/>
+                {postList.xp} XP
+                <img 
+                className="xp-down"
+                src="https://cdn-images-1.medium.com/max/800/1*qYKAkcTfQkQRm2Ce7sjWSA.png"/>
+                
+              </Typography>
+  
+              <Typography sx={{ mb: 0 }} color="text.secondary">
+                {postList.views} views
+              </Typography>
+  
+            </CardContent>
+  
+            <CardActions>
+              <Button size="small">Comments 
+              <img 
+              className="comment-icon"
+              src="https://cdn-images-1.medium.com/max/800/1*nH3vaPiqc5ZEiH6u-aJszg.png"/>
+              </Button>
+            </CardActions>
+
+            <Box sx={{ minWidth: 275 }}>
+            <Card variant="outlined"></Card>
           </Box>
+
+          </React.Fragment>
+          </div>
+
+          
         );
       
 }
