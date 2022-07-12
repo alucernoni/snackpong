@@ -1,3 +1,3 @@
 class SnacksPostSerializer < ActiveModel::Serializer
-  attributes :id, :title, :xp, :views
+  attributes :id, :content, :title, :xp, :views
 end
