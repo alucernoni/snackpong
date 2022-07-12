@@ -1,18 +1,22 @@
 import './App.css';
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route, Links} from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import NewPostForm from './Pages/NewPostForm';
+import CreatePostPage from './Pages/CreatePostPage';
 
 
 function App() {
   return (
     <div className="App">
-      
-        <HomePage />
+
+        {/* <HomePage /> */}
         <Routes>
           <Route exact path="/"/>
+
           <Route path="/profile"/>
-          <Route path="/new_post" element={<NewPostForm />}/>
+          <Route path="home" element={<HomePage />}/>
+           
+          <Route path="newpost" element={<CreatePostPage />}/>
+
           <Route path="/login"/>
           <Route path="/signup"/>
         </Routes>
