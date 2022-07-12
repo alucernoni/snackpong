@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2022_07_11_230038) do
   create_table "snacks_posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "xp"
-    t.integer "views"
+    t.integer "xp", default: 0
+    t.integer "views", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
