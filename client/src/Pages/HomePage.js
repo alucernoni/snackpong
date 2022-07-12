@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import NavBar from '../Components/NavBar'
 import PostList from '../Components/PostList'
 
+
 function HomePage() {
 
     const [posts, setPosts] = useState([]);
@@ -23,6 +24,7 @@ function HomePage() {
         <NavBar />
         <PostList 
         posts= {posts}/>
+        
        
         
     </div>
