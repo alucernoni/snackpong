@@ -21,7 +21,7 @@ class SnacksPostsController < ApplicationController
     end
 
     def destroy 
-        @post.destroy!(post_params)
+        @post.destroy!
         head :no_content
     end
 

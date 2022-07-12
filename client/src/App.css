@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.post-cards {
+  width: 500px;
+  height: auto;
+}
+
+.comment-icon {
+  width: 20px;
+  height: auto;
+  padding-left: 5px;
+}
+
+.xp-up {
+  width: 20px;
+  height: auto;
+  padding-right: 5px;
+}
+
+.xp-down {
+  width: 20px;
+  height: auto;
+  padding-left: 5px;
+}

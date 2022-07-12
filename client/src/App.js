@@ -1,6 +1,7 @@
 import './App.css';
 import {Routes, Route, Link} from 'react-router-dom';
 import HomePage from './Pages/HomePage';
+import NewPostForm from './Pages/NewPostForm';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
         <Routes>
           <Route exact path="/"/>
           <Route path="/profile"/>
-          <Route path="/new_post"/>
+          <Route path="/new_post" element={<NewPostForm />}/>
           <Route path="/login"/>
           <Route path="/signup"/>
         </Routes>
