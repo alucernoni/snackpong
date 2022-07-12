@@ -24,10 +24,42 @@ XpJoiner.reset_pk_sequence
 
 puts "Starting Seeding..."
 
+danko = User.create(
+    username: "Danko Karleusa", 
+    password:"12345678", 
+    password_confirmation:"12345678", 
+    admin: true,
+    profile_name: "Zirael", 
+    profile_image_url: Faker::Placeholdit.image, 
+    bio: "THE CROATIAN SENSATION")
+   
+
+anniemarie = User.create(
+    username: "Anniemarie Lucernoni", 
+    password:"12345678", 
+    password_confirmation:"12345678", 
+    admin: true, 
+    profile_name: "Typsy Cyclist", 
+    profile_image_url: Faker::Placeholdit.image, 
+    bio: "I drink and bike!")
+    
+
+leah = User.create(
+    username: "Leah Chen", 
+    password:"12345678", 
+    password_confirmation:"12345678", 
+    admin: true,
+    profile_name: "Snack Queen", 
+    profile_image_url: Faker::Placeholdit.image, 
+    bio: "Bow down and bring me snacks!") 
+   
+
+
 10.times do 
     User.create(
         username: Faker::Name.name,
-        password: Faker::Alphanumeric.alphanumeric(number: 10),
+        password:"12345678", 
+        password_confirmation:"12345678",
         profile_name: Faker::Superhero.name, 
         profile_image_url: Faker::Placeholdit.image, 
         bio: Faker::Hacker.say_something_smart)

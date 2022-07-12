@@ -11,8 +11,8 @@ function HomePage() {
         fetch("/snacks_posts/")
           .then((resp) => resp.json())
           .then((postsArray) => {
-            setPosts(postsArray);
             console.log(postsArray)
+            setPosts(postsArray)
           });
       }, []);
 
@@ -22,9 +22,7 @@ function HomePage() {
     <div>
         <NavBar />
         <PostList 
-        posts= {posts}/>
-       
-        
+        posts= {posts}/>        
     </div>
   )
 }

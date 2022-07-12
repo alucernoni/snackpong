@@ -14,7 +14,7 @@ function LoginPage() {
         style={{ minHeight: '50vh'}}
         >
       <TextField id="outlined-basic" label="Username" variant="outlined" />
-      <TextField id="outlined-basic" label="Password" variant="outlined" />
+      <TextField id="outlined-basic" label="Password" variant="outlined" type="password" />
       <Button variant="contained">Login</Button> 
       </Stack>
       
