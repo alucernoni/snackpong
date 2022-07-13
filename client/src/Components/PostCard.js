@@ -1,4 +1,5 @@
-import React from 'react'
+
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -6,23 +7,45 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deepPurple } from '@mui/material/colors';
 
 
-function PostCard({post, setSelectedPost, onClickPost}) {
+
+function PostCard({onDeletePost, post, setSelectedPost, onClickPost}) {
+const {id, title, content, xp, views} = postList;
+
+const [isUp, setIsUp] = useState("")
+const [isDown, setIsDown]= useState("")
+const color= deepPurple[200];
+
+const emptyDownArrow= "https://cdn-images-1.medium.com/max/800/1*qYKAkcTfQkQRm2Ce7sjWSA.png"
+const redDownArrow= "https://cdn-images-1.medium.com/max/800/1*oNM0yOEyn77IsTdUDmXcVg.png"
+const emptyUpArrow= "https://cdn-images-1.medium.com/max/800/1*kIv0TNBYlRLGg8F72lHC3A.png"
+const greenUpArrow= "https://cdn-images-1.medium.com/max/800/1*DdtVeHfbdwjwmLWwkmG8UA.png"
+
+const handleUp = () => {
+  // updateUp(id, isUp)
+  setIsUp(!isUp)
+}
+const handleDown = () => {
+  // updateDown(id, isDown)
+  setIsDown(!isDown)
+}
+
+function handleDeleteClick() {
+  fetch(`/snacks_posts/${id}`, {
+    method: "DELETE",
+  });
+  onDeletePost(id);  
+}
 
   const handleClick = () => {
     // setSelectedPost(post)
     onClickPost(post)
   }
 
-    // const bull = (
-    //     <Box
-    //       component="span"
-    //       sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    //     >
-    //       •
-    //     </Box>
-    //   );
+
       
         return (
             <div className="post-cards">
@@ -41,13 +64,15 @@ function PostCard({post, setSelectedPost, onClickPost}) {
               <Typography sx={{ mb: 0 }} color="text.secondary">
                 <img 
                 className="xp-up"
+                onClick={handleUp}
+                src= {isUp ? greenUpArrow : emptyUpArrow}
 
-                src="https://cdn-images-1.medium.com/max/800/1*kIv0TNBYlRLGg8F72lHC3A.png"
                 alt=""/>
                 {post.xp} XP
                 <img 
                 className="xp-down"
-                src="https://cdn-images-1.medium.com/max/800/1*qYKAkcTfQkQRm2Ce7sjWSA.png"
+                onClick={handleDown}
+                src= {isDown ? redDownArrow : emptyDownArrow}
                 alt=""
                 />
                 
@@ -66,6 +91,9 @@ function PostCard({post, setSelectedPost, onClickPost}) {
               src="https://cdn-images-1.medium.com/max/800/1*nH3vaPiqc5ZEiH6u-aJszg.png"
               alt=""/>
               </Button>
+              <DeleteIcon
+              onClick= {handleDeleteClick}
+              sx={{ color: deepPurple[200] }}/>
             </CardActions>
 
             <Box sx={{ minWidth: 275 }}>

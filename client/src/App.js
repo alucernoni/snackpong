@@ -28,6 +28,7 @@ function App() {
     <div className="App">
           <NavBar  handleLogged={handleLogged} isLoggedIn={isLoggedIn}/>
           <Routes>
+
           <Route exact path="/login" element={<LoginPage isLoggedIn={isLoggedIn} handleLogged={handleLogged}/>} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/new_post" element={<CreatePostPage />}/>

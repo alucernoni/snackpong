@@ -3,15 +3,10 @@ import PostPage from '../Pages/PostPage'
 import PostCard from './PostCard'
 
 
-function PostList({posts, setSelectedPost, onClickPost}) {
+function PostList({posts, onDeletePost, setSelectedPost, onClickPost}) {
 
 
-  // const displayedPosts = (postObj) => {
-  //   if (postObj) return {
-  //     <PostPage/>
-  //   }
 
-  // }
      
   return (
     
@@ -19,7 +14,9 @@ function PostList({posts, setSelectedPost, onClickPost}) {
             return (
               <PostCard
                 key={post.id}
-                // {...post}
+
+                // postList={post}
+                onDeletePost={onDeletePost}
                 post={post}
                 setSelectedPost={setSelectedPost}
                 onClickPost={onClickPost}

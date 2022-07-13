@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,6 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
+import PostForm from './PostForm';
 import {Link} from 'react-router-dom'
 import {useState} from 'react';
 import Tooltip from '@mui/material/Tooltip';
@@ -16,6 +18,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 function NavBar({handleLogged, isLoggedIn}) {
+
+
 
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
@@ -81,26 +85,24 @@ function NavBar({handleLogged, isLoggedIn}) {
     <Stack>
         <AppBar position= "static">
                 <Toolbar>
+
+            
+                
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                   <Tooltip title="Create a New Post">
-                <IconButton
+                  <IconButton
                   size="large"
                   edge="start"
                   color="inherit"
                   aria-label="open drawer"
                   sx={{ mr: 2 }}
                 >
-                  
-                  <Link to='/new_post' >
-                  <img 
-                  src="https://cdn-images-1.medium.com/max/1000/1*NpwRpbvvwz_dZRkvajFh8w.png"
-                  width={`${40}px`} 
-                  height={`${40}px`} 
-                  alt=""
-                  onMouseOver={handleMouseOver}
-                  onMouseOut={handleMouseOut}
-                   />
-                   
-                  </Link>
+                  <PostForm />
+              
                   </IconButton>
                   </Tooltip >
                   <IconButton>
@@ -108,6 +110,7 @@ function NavBar({handleLogged, isLoggedIn}) {
                 <Link to='/'
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut} 
+
                 >
                   {/* <img 
                   // src="https://cdn-images-1.medium.com/max/1000/1*NpwRpbvvwz_dZRkvajFh8w.png"
