@@ -1,8 +1,16 @@
 import React from 'react'
+import CommentCard from './CommentCard'
 
-function CommentList() {
+function CommentList({comments}) {
+
+  console.log("comments:", comments)
+
   return (
-    <div>CommentList</div>
+    comments.map((comment) => {
+      return (
+        <CommentCard key={comment.id} commentContent={comment.comment} profileName={comment.user.profile_name} replies={comment.replies}/>
+      )
+    })
   )
 }
 

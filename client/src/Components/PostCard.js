@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,8 +8,12 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 
-function PostCard({postList}) {
+function PostCard({post, setSelectedPost, onClickPost}) {
 
+  const handleClick = () => {
+    // setSelectedPost(post)
+    onClickPost(post)
+  }
 
     // const bull = (
     //     <Box
@@ -23,21 +28,23 @@ function PostCard({postList}) {
             <div className="post-cards">
             <React.Fragment>
             <CardContent>
-
-              <Typography variant="h6" component="div">
-                {postList.title}
-              </Typography>
-  
-              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                {postList.content}
-              </Typography>
-  
+              <Link to= "/post" style={{textDecoration: 'none'}}>
+                  <Typography variant="h6" component="div" onClick={handleClick}>
+                  {post.title}
+                </Typography>
+              </Link>
+              <Link to= "/post" style={{textDecoration: 'none'}}>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom onClick={handleClick}>
+                {post.content}
+                </Typography>     
+              </Link>
               <Typography sx={{ mb: 0 }} color="text.secondary">
                 <img 
                 className="xp-up"
+
                 src="https://cdn-images-1.medium.com/max/800/1*kIv0TNBYlRLGg8F72lHC3A.png"
                 alt=""/>
-                {postList.xp} XP
+                {post.xp} XP
                 <img 
                 className="xp-down"
                 src="https://cdn-images-1.medium.com/max/800/1*qYKAkcTfQkQRm2Ce7sjWSA.png"
@@ -47,7 +54,7 @@ function PostCard({postList}) {
               </Typography>
   
               <Typography sx={{ mb: 0 }} color="text.secondary">
-                {postList.views} views
+                {post.views} views
               </Typography>
   
             </CardContent>
