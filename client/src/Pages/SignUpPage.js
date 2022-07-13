@@ -1,8 +1,53 @@
 import React from 'react'
+import { useState } from 'react'
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
-function SignupPage() {
+function SignupPage({handleLogged, isLoggedIn}) {
+
+  const [signUpInfo, setSignUpInfo] = useState("")
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.value;
+    setSignUpInfo({...signUpInfo, [name]: value})
+  }
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    signUpUser(signUpInfo)
+    handleLogged(isLoggedIn)
+  }
+
+  const navigate = useNavigate()
+  const signUpUser = (signUpInfo) => {
+    fetch('/signup', {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(signUpInfo)
+    })
+      .then(res => res.json())
+      navigate('/')
+  }
+
   return (
-    <div>SignupPage</div>
+    <form onSubmit={handleSignUp}>
+     <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center" 
+        spacing={4}
+        style={{ minHeight: '50vh'}}
+        >
+         
+       <TextField id="outlined-basic" name="username" value={signUpInfo.username} label="Username" variant="outlined" onChange={handleChange}/>
+      <TextField id="outlined-basic" name="password" value={signUpInfo.password} label="Password" variant="outlined" type="password" onChange={handleChange}/>
+      <TextField id="outlined-basic" name="password_confirmation" value={signUpInfo.password_confirmation} label="Password Confirmation" variant="outlined" type="password" onChange={handleChange}/>
+      <Button type="submit" variant="contained">Sign Up</Button> 
+      </Stack>
+      </form>
   )
 }
 
