@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import NavBar from '../Components/NavBar'
 import PostList from '../Components/PostList'
 
+
 function HomePage({setSelectedPost, onClickPost}) {
+
 
     const [posts, setPosts] = useState([]);
 
@@ -11,8 +12,8 @@ function HomePage({setSelectedPost, onClickPost}) {
         fetch("/snacks_posts/")
           .then((resp) => resp.json())
           .then((postsArray) => {
-            setPosts(postsArray);
             console.log(postsArray)
+            setPosts(postsArray)
           });
       }, []);
 
@@ -20,14 +21,12 @@ function HomePage({setSelectedPost, onClickPost}) {
     
   return (
     <div>
-        <NavBar />
         <PostList 
         posts= {posts}
         setSelectedPost={setSelectedPost}
         onClickPost={onClickPost}
         />
-       
-        
+
     </div>
   )
 }

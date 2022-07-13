@@ -1,10 +1,13 @@
 import './App.css';
-import {Routes, Route, Link} from 'react-router-dom';
-import HomePage from './Pages/HomePage';
-import NewPostForm from './Pages/NewPostForm';
+import {Routes, Route, Links} from 'react-router-dom';
+import HomePage from './Pages/HomePage';     
+import Profile from './Pages/Profile'
+import LoginPage from './Pages/LoginPage'
+import SignUpPage from './Pages/SignUpPage'
+import CreatePostPage from './Pages/CreatePostPage';
+import NavBar from './Components/NavBar'
 import PostPage from './Pages/PostPage';
-import {useState} from 'react'
-
+import {useState} from 'react';
 
 function App() {
 
@@ -13,23 +16,25 @@ function App() {
   const onClickPost = (postObj) => {
     setSelectedPost(postObj)
   }
-
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  
+  const handleLogged = (isLoggedIn) => {
+  isLoggedIn === false ? setIsLoggedIn(true) : setIsLoggedIn(false)
+  return isLoggedIn
+  }
 
   return (
     <div className="App">
-      
-        {/* <HomePage /> */}
-        <Routes>
-          <Route exact path="/" element={<HomePage setSelectedPost={setSelectedPost} onClickPost={onClickPost}/>}/>
-          <Route path="/profile"/>
-          <Route path="/new_post" element={<NewPostForm />}/>
+          <NavBar  handleLogged={handleLogged} isLoggedIn={isLoggedIn}/>
+          <Routes>
+          <Route exact path="/login" element={<LoginPage isLoggedIn={isLoggedIn} handleLogged={handleLogged}/>} />
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/new_post" element={<CreatePostPage />}/>
           <Route path="/post" element={<PostPage {...selectedPost}/>}/>
-          <Route path="/login"/>
-          <Route path="/signup"/>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/signup" element={<SignUpPage  isLoggedIn={isLoggedIn} handleLogged={handleLogged}/>}/>
         </Routes>
-
-    
-      
     </div>
   );
 }

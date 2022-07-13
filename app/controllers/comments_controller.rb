@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
    before_action :find_comment
+   before_action :authorize_user, only: [:update, :destroy]
     
     def show
         render json: @comment, include: :replies
@@ -24,6 +25,12 @@ class CommentsController < ApplicationController
     
     def find_comment 
         @comment=Comment.find_by(id: params[:id])
+    end
+
+    def authorize_user
+        return if current_user.admin? || current_user == comment.user
+        render json: { errors: "You don't have permission to perform that action" }, status: :forbidden
+      end
     end
 
     def comment_params 
