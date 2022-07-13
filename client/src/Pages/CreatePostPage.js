@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import NavBar from '../Components/NavBar'
+import React, { useState} from 'react'
 import PostForm from '../Components/PostForm'
 
 function CreatePostPage() {
@@ -19,7 +18,6 @@ function CreatePostPage() {
 
   return (
     <div>
-      <NavBar />
       <PostForm
       onAddPost= {handleAddPost}
       />

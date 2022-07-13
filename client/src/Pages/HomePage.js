@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import NavBar from '../Components/NavBar'
 import PostList from '../Components/PostList'
 
 
@@ -21,7 +20,6 @@ function HomePage() {
     
   return (
     <div>
-        <NavBar />
         <PostList 
         posts= {posts}/>        
     </div>
