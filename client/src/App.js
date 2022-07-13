@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
           <Routes>
-          <Route exact path="/" element={<HomePage/>} />
-          <Route path="/profile" element={<Profile/>}/>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/profile" element={<Profile />}/>
           <Route path="/new_post" element={<CreatePostPage />}/>
           <Route path="/login" element={<LoginPage />}/>
           <Route path="/signup" element={<SignUpPage />}/>

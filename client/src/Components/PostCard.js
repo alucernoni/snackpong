@@ -1,23 +1,34 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deepPurple } from '@mui/material/colors';
 
 
 function PostCard({postList}) {
 
+const [isUp, setIsUp] = useState("")
+const [isDown, setIsDown]= useState("")
+const color= deepPurple[200];
 
-    // const bull = (
-    //     <Box
-    //       component="span"
-    //       sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    //     >
-    //       •
-    //     </Box>
-    //   );
+const emptyDownArrow= "https://cdn-images-1.medium.com/max/800/1*qYKAkcTfQkQRm2Ce7sjWSA.png"
+const redDownArrow= "https://cdn-images-1.medium.com/max/800/1*oNM0yOEyn77IsTdUDmXcVg.png"
+const emptyUpArrow= "https://cdn-images-1.medium.com/max/800/1*kIv0TNBYlRLGg8F72lHC3A.png"
+const greenUpArrow= "https://cdn-images-1.medium.com/max/800/1*DdtVeHfbdwjwmLWwkmG8UA.png"
+
+const handleUp = () => {
+  // updateUp(id, isUp)
+  setIsUp(!isUp)
+}
+const handleDown = () => {
+  // updateDown(id, isDown)
+  setIsDown(!isDown)
+}
+
       
         return (
             <div className="post-cards">
@@ -35,12 +46,14 @@ function PostCard({postList}) {
               <Typography sx={{ mb: 0 }} color="text.secondary">
                 <img 
                 className="xp-up"
-                src="https://cdn-images-1.medium.com/max/800/1*kIv0TNBYlRLGg8F72lHC3A.png"
+                onClick={handleUp}
+                src= {isUp ? greenUpArrow : emptyUpArrow}
                 alt=""/>
                 {postList.xp} XP
                 <img 
                 className="xp-down"
-                src="https://cdn-images-1.medium.com/max/800/1*qYKAkcTfQkQRm2Ce7sjWSA.png"
+                onClick={handleDown}
+                src= {isDown ? redDownArrow : emptyDownArrow}
                 alt=""
                 />
                 
@@ -59,6 +72,7 @@ function PostCard({postList}) {
               src="https://cdn-images-1.medium.com/max/800/1*nH3vaPiqc5ZEiH6u-aJszg.png"
               alt=""/>
               </Button>
+              <DeleteIcon sx={{ color: deepPurple[200] }}/>
             </CardActions>
 
             <Box sx={{ minWidth: 275 }}>
