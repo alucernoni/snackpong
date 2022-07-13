@@ -9,10 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-
-
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
@@ -22,8 +19,9 @@ import PostForm from './PostForm';
 
 
 
-
 function NavBar() {
+
+
 
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
@@ -69,28 +67,9 @@ function NavBar() {
     <Stack>
         <AppBar position= "static">
                 <Toolbar>
-<PostForm />
-                {/* <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="open drawer"
-                  sx={{ mr: 2 }}
-                >
                   
+        <PostForm />
                 
-                  
-                </IconButton> */}
-{/* 
-                <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="open drawer"
-                  sx={{ mr: 2 }}
-                >
-                 
-                </IconButton> */}
                 <Typography
                   variant="h6"
                   noWrap

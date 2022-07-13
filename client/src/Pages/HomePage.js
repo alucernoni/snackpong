@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import NavBar from '../Components/NavBar'
 import PostList from '../Components/PostList'
-import PostForm from '../Components/PostForm';
+
 
 
 function HomePage() {
-
     const [posts, setPosts] = useState([]);
 
 
@@ -23,16 +22,21 @@ function HomePage() {
     setPosts(updatedPostsArray);
   }
 
-  // function handleUpdatePost(updatedPost) {
-  //   const updatedPostsArray = posts.map((post) => {
-  //     if (post.id === updatedPost.id) {
-  //       return updatedPost;
-  //     } else {
-  //       return post;
-  //     }
-  //   });
-  //   setPosts(updatedPostsArray);
-  // }
+  function handleDeletePost(id) {
+    const updatedPostsArray = posts.filter((post) => post.id !== id);
+    setPosts(updatedPostsArray);
+  }
+
+  function handleUpdatePost(updatedPost) {
+    const updatedPostsArray = posts.map((post) => {
+      if (post.id === updatedPost.id) {
+        return updatedPost;
+      } else {
+        return post;
+      }
+    });
+    setPosts(updatedPostsArray);
+  }
 
   // const displayedPosts = posts.filter((post) => {
   //   return post.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -41,9 +45,10 @@ function HomePage() {
   return (
     <div>
         <NavBar />
-        
         <PostList 
-        posts= {posts}/>        
+        posts= {posts}
+        onDeletePost= {handleDeletePost}
+        />        
     </div>
   )
 }

@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -40,7 +39,7 @@ function PostForm({ onAddPost}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/snacks_posts", {
+        fetch("/snacks_posts", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -48,7 +47,8 @@ function PostForm({ onAddPost}) {
           body: JSON.stringify({
             title: title,
             content: content,
-            image: image,
+    
+            // image: image,
           }),
         })
           .then((r) => r.json())

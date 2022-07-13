@@ -9,7 +9,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { deepPurple } from '@mui/material/colors';
 
 
-function PostCard({postList}) {
+function PostCard({postList, onDeletePost}) {
+const {id, title, content, xp, views} = postList;
 
 const [isUp, setIsUp] = useState("")
 const [isDown, setIsDown]= useState("")
@@ -27,6 +28,13 @@ const handleUp = () => {
 const handleDown = () => {
   // updateDown(id, isDown)
   setIsDown(!isDown)
+}
+
+function handleDeleteClick() {
+  fetch(`/snacks_posts/${id}`, {
+    method: "DELETE",
+  });
+  onDeletePost(id);  
 }
 
       
@@ -72,7 +80,9 @@ const handleDown = () => {
               src="https://cdn-images-1.medium.com/max/800/1*nH3vaPiqc5ZEiH6u-aJszg.png"
               alt=""/>
               </Button>
-              <DeleteIcon sx={{ color: deepPurple[200] }}/>
+              <DeleteIcon
+              onClick= {handleDeleteClick}
+              sx={{ color: deepPurple[200] }}/>
             </CardActions>
 
             <Box sx={{ minWidth: 275 }}>
