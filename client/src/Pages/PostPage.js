@@ -37,7 +37,6 @@ function PostPage({user, comments, title, content, xp, views}) {
        </CardContent>
    </Card>
    <CommentList comments = {comments} />
-   {/* <ReplyList comments = {comments} /> */}
    </React.Fragment>
   )
 }
