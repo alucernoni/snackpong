@@ -1,8 +1,18 @@
 import React from 'react'
+import ReplyCard from './ReplyCard'
 
-function ReplyList() {
+function ReplyList({replies}) {
+
+  console.log("comments replies:", replies)
+
+
   return (
-    <div>ReplyList</div>
+    replies.map((reply) => {
+      <ReplyCard 
+      key={reply.id} 
+      reply={reply.reply}
+      />
+    })
   )
 }
 

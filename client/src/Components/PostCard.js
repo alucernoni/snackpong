@@ -1,4 +1,6 @@
+
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -9,7 +11,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { deepPurple } from '@mui/material/colors';
 
 
-function PostCard({postList, onDeletePost}) {
+
+function PostCard({onDeletePost, post, setSelectedPost, onClickPost}) {
 const {id, title, content, xp, views} = postList;
 
 const [isUp, setIsUp] = useState("")
@@ -37,27 +40,35 @@ function handleDeleteClick() {
   onDeletePost(id);  
 }
 
+  const handleClick = () => {
+    // setSelectedPost(post)
+    onClickPost(post)
+  }
+
+
       
         return (
             <div className="post-cards">
             <React.Fragment>
             <CardContent>
-
-              <Typography variant="h6" component="div">
-                {postList.title}
-              </Typography>
-  
-              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                {postList.content}
-              </Typography>
-  
+              <Link to= "/post" style={{textDecoration: 'none'}}>
+                  <Typography variant="h6" component="div" onClick={handleClick}>
+                  {post.title}
+                </Typography>
+              </Link>
+              <Link to= "/post" style={{textDecoration: 'none'}}>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom onClick={handleClick}>
+                {post.content}
+                </Typography>     
+              </Link>
               <Typography sx={{ mb: 0 }} color="text.secondary">
                 <img 
                 className="xp-up"
                 onClick={handleUp}
                 src= {isUp ? greenUpArrow : emptyUpArrow}
+
                 alt=""/>
-                {postList.xp} XP
+                {post.xp} XP
                 <img 
                 className="xp-down"
                 onClick={handleDown}
@@ -68,7 +79,7 @@ function handleDeleteClick() {
               </Typography>
   
               <Typography sx={{ mb: 0 }} color="text.secondary">
-                {postList.views} views
+                {post.views} views
               </Typography>
   
             </CardContent>

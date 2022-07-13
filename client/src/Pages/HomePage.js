@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import NavBar from '../Components/NavBar'
 import PostList from '../Components/PostList'
 
 
 
-function HomePage() {
+function HomePage({setSelectedPost, onClickPost}) {
+
     const [posts, setPosts] = useState([]);
 
 
@@ -44,10 +44,12 @@ function HomePage() {
     
   return (
     <div>
-        <NavBar />
         <PostList 
         posts= {posts}
+
         onDeletePost= {handleDeletePost}
+        setSelectedPost={setSelectedPost}
+        onClickPost={onClickPost}
         />        
     </div>
   )

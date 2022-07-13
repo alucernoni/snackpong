@@ -1,25 +1,23 @@
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import PostForm from './PostForm';
+import {Link} from 'react-router-dom'
+import {useState} from 'react';
+import Tooltip from '@mui/material/Tooltip';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
 
 
 
-function NavBar() {
+
+function NavBar({handleLogged, isLoggedIn}) {
 
 
 
@@ -63,21 +61,69 @@ function NavBar() {
         },
       }));
 
+      const [isHovering, setIsHovering] = useState(false)
+
+      const handleMouseOver = () => {
+        setIsHovering(true)
+      }
+
+      const handleMouseOut = () => {
+        setIsHovering(false)
+      }
+
+      const navigate = useNavigate()
+
+      const handleLogOut = () => {
+        fetch('/logout', {
+          method: "DELETE",
+        })
+          navigate('/login')
+          handleLogged(isLoggedIn)
+      }
+//      
   return (
     <Stack>
         <AppBar position= "static">
                 <Toolbar>
-                  
-        <PostForm />
+
+            
                 
                 <Typography
                   variant="h6"
                   noWrap
                   component="div"
                   sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                  <Tooltip title="Create a New Post">
+                  <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                  sx={{ mr: 2 }}
                 >
-                  SnackPong
-                </Typography>
+                  <PostForm />
+              
+                  </IconButton>
+                  </Tooltip >
+                  <IconButton>
+                <Tooltip title="Home">
+                <Link to='/'
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut} 
+
+                >
+                  {/* <img 
+                  // src="https://cdn-images-1.medium.com/max/1000/1*NpwRpbvvwz_dZRkvajFh8w.png"
+                  width={`${40}px`} 
+                  height={`${40}px`} 
+                  alt=""
+                  onMouseOver={handleMouseOver}
+                  onMouseOut={handleMouseOut}
+                   /> */}
+                   SnackPost
+                  </Link>
+                  </Tooltip>
+                  </IconButton>
                 <Search>
                   <SearchIconWrapper>
                     <SearchIcon />
@@ -87,9 +133,23 @@ function NavBar() {
                     inputProps={{ 'aria-label': 'search' }}
                   />
                 </Search>
+                <Tooltip title="Profile">
                 <IconButton>
-                <Avatar alt="SnackPong" src="/static/images/avatar/2.jpg" />
+                <Link to='/profile' >
+                  <img 
+                  src="https://cdn-images-1.medium.com/max/1000/1*ASmjaK0nkjEB3y5s0TgZSg.png"
+                  width={`${40}px`} 
+                  height={`${40}px`} 
+                  alt=""
+                  onMouseOver={handleMouseOver}
+                  onMouseOut={handleMouseOut}
+                   />
+                  </Link>
               </IconButton>
+              </Tooltip>
+
+              {isLoggedIn === true ? <Tooltip title="Log Out"><LogoutIcon onClick={handleLogOut}/></Tooltip>: null}
+
               </Toolbar>
         </AppBar>
    </Stack> 
