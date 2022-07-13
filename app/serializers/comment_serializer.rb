@@ -1,5 +1,6 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :comment, :reply_ids, :snacks_post_id
+  attributes :id, :comment, :replies, :snacks_post_id, :user
   has_many :replies
   has_one :snacks_post
+  belongs_to :user
 end

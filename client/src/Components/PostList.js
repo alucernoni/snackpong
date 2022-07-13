@@ -1,7 +1,17 @@
-import React from 'react'
+import {useState, React} from 'react'
+import PostPage from '../Pages/PostPage'
 import PostCard from './PostCard'
 
-function PostList({posts}) {
+
+function PostList({posts, setSelectedPost, onClickPost}) {
+
+
+  // const displayedPosts = (postObj) => {
+  //   if (postObj) return {
+  //     <PostPage/>
+  //   }
+
+  // }
      
   return (
     
@@ -9,8 +19,10 @@ function PostList({posts}) {
             return (
               <PostCard
                 key={post.id}
-                postList={post}
-                
+                // {...post}
+                post={post}
+                setSelectedPost={setSelectedPost}
+                onClickPost={onClickPost}
               />
             );
           })

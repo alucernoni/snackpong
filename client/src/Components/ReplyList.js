@@ -1,9 +1,19 @@
-import React from 'react'
+// import React from 'react'
+// import ReplyCard from './ReplyCard'
 
-function ReplyList() {
-  return (
-    <div>ReplyList</div>
-  )
-}
+// function ReplyList({comments}) {
 
-export default ReplyList
+//   console.log("comments replies:", comments.replies)
+
+
+//   return (
+//     comments.replies.map((reply) => {
+//       // <ReplyCard 
+//       // key={reply.id} 
+//       // reply={reply.reply}
+//       // />
+//     })
+//   )
+// }
+
+// export default ReplyList
