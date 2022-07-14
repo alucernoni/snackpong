@@ -16,12 +16,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function NavBar({handleAddPost, user}) {
-  
-
-  
-
-    const Search = styled('div')(({ theme }) => ({
+function NavBar({handleAddPost, user, setUser}) {
+      const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -77,21 +73,14 @@ function NavBar({handleAddPost, user}) {
         fetch('/logout', {
           method: "DELETE",
         })
+        setUser(null)
           navigate('/')
       }
 //      
   return (
     <Stack>
         <AppBar position= "static">
-                <Toolbar>
-
-            
-                
-                {/* <Typography
-                  variant="h6"
-                  noWrap
-                  component="div"
-                  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}> */}
+                <Toolbar>                  
                   <Tooltip title="Create a New Post">
                   <IconButton
                   size="large"
@@ -99,31 +88,29 @@ function NavBar({handleAddPost, user}) {
                   color="inherit"
                   aria-label="open drawer"
                   sx={{ mr: 2 }}
+                  disabled={user ? false : true}
                 >
                   <PostForm 
                   handleAddPost= {handleAddPost} user={user}
-                  />
-              
+                  />              
                   </IconButton>
                   </Tooltip >
-                  <IconButton>
+                  <IconButton disabled={user ? false : true}>
                 <Tooltip title="Home">
-                <Link to='/'
+                <Link to='/homepage'
                 onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut} 
-
+                onMouseOut={handleMouseOut}
                 >
                   <img 
                   src="https://cdn-images-1.medium.com/max/1000/1*KPDWqXSt-JYENe5T6tIRdg.png"
                   width={`${100}px`} 
                   height={`auto`} 
                   alt=""
-                   />
-            
+                   />            
                   </Link>
                   </Tooltip>
                   </IconButton>
-                <Search>
+                <Search disabled={user ? false : true}>
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
@@ -133,7 +120,7 @@ function NavBar({handleAddPost, user}) {
                   />
                 </Search>
                 <Tooltip title="Profile">
-                <IconButton>
+                <IconButton disabled={user ? false : true}>
                 <Link to='/profile' >
                   <img 
                   src="https://cdn-images-1.medium.com/max/1000/1*ASmjaK0nkjEB3y5s0TgZSg.png"
@@ -146,7 +133,6 @@ function NavBar({handleAddPost, user}) {
                   </Link>
               </IconButton>
               </Tooltip>
-
               {user ? <Tooltip title="Log Out"><LogoutIcon onClick={handleLogOut}/></Tooltip>: null}
 
               </Toolbar>

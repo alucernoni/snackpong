@@ -4,7 +4,6 @@ import HomePage from './Pages/HomePage';
 import Profile from './Pages/Profile'
 import LoginPage from './Pages/LoginPage'
 import SignUpPage from './Pages/SignUpPage'
-import CreatePostPage from './Pages/CreatePostPage';
 import NavBar from './Components/NavBar'
 import PostPage from './Pages/PostPage';
 import {useState, useEffect} from 'react';
@@ -30,7 +29,7 @@ function App() {
   }
   
   const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState(null)
+  
 
   useEffect(() => {
     fetch('/me').then((resp) => {
@@ -71,29 +70,31 @@ function App() {
     setPosts(updatedPostsArray);
   }
 
-  if (!user) return <LoginPage onLogin={setUser} />
+  if (!user) return (
+    <>
+    <NavBar user={user}/>
+  <LoginPage onLogin={setUser}/>  
+ </>)
+ 
+ if (!user) return (
+  <>
+   <NavBar user={user}/> < SignUpPage onSignUp={setUser}/>
+  </> 
+ )
 
   return (
     <div className="App">
       <NavBar 
         handleAddPost={handleAddPost} user={user} setUser={setUser}
       />
-    <Routes>
-     
-
-      
+    <Routes>      
         <Route exact path="/" element={<LoginPage onLogin={setUser}  />} />
          <Route path="/homepage" element={<HomePage onClickPost={onClickPost}
         posts={posts}
         onDeletePost={handleDeletePost}
-        onUpdatePost={onUpdatePost}
-      />} />
+        onUpdatePost={onUpdatePost}/>} />
         <Route path="/profile" element={<Profile user={user}/>} />
-        <Route path="/new_post" element={<CreatePostPage user={user}/>} />
         <Route path="/post" element={<PostPage {...selectedPost} />} />
-
-
-
         <Route path="/signup" element={<SignUpPage  onSignUp={setUser}/>} />
       </Routes>
     </div>
