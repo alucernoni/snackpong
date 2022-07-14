@@ -11,19 +11,24 @@ import {useState, useEffect} from 'react';
 
 function App() {
 
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    fetch('/me').then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => setUser(user))
+      }
+    })
+  }, [])
+
+
+
   const [selectedPost, setSelectedPost] = useState({})
   
   const onClickPost = (postObj) => {
     setSelectedPost(postObj)
   }
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  
-  const handleLogged = (isLoggedIn) => {
-  isLoggedIn === false ? setIsLoggedIn(true) : setIsLoggedIn(false)
-  return isLoggedIn
-  }
-
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState(null)
 
@@ -66,29 +71,30 @@ function App() {
     setPosts(updatedPostsArray);
   }
 
+  if (!user) return <LoginPage onLogin={setUser} />
 
   return (
     <div className="App">
-      <NavBar handleLogged={handleLogged} isLoggedIn={isLoggedIn}
-        handleAddPost={handleAddPost} user={user}
+      <NavBar 
+        handleAddPost={handleAddPost} user={user} setUser={setUser}
       />
     <Routes>
-      <Route path="/" element={<HomePage onClickPost={onClickPost}
+     
+
+      
+        <Route exact path="/" element={<LoginPage onLogin={setUser}  />} />
+         <Route path="/homepage" element={<HomePage onClickPost={onClickPost}
         posts={posts}
         onDeletePost={handleDeletePost}
         onUpdatePost={onUpdatePost}
       />} />
-
-      
-        <Route exact path="/login" element={<LoginPage isLoggedIn={isLoggedIn} handleLogged={handleLogged} />} />
-        
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/new_post" element={<CreatePostPage />} />
+        <Route path="/profile" element={<Profile user={user}/>} />
+        <Route path="/new_post" element={<CreatePostPage user={user}/>} />
         <Route path="/post" element={<PostPage {...selectedPost} />} />
 
 
 
-        <Route path="/signup" element={<SignUpPage isLoggedIn={isLoggedIn} handleLogged={handleLogged} />} />
+        <Route path="/signup" element={<SignUpPage  onSignUp={setUser}/>} />
       </Routes>
     </div>
   );

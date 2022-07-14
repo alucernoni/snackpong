@@ -12,7 +12,7 @@ class SnacksPostsController < ApplicationController
     end
 
     def create
-        post= SnacksPost.create!(post_params)
+        post = current_user.snacksPosts.create!(post_params)
         render json: post, status: :created
     end
 
@@ -39,7 +39,7 @@ class SnacksPostsController < ApplicationController
     
 
     def post_params
-        params.permit(:title, :content, :user_id)
+        params.permit(:title, :content)
     end
 
 end
