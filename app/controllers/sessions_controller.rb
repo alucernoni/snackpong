@@ -15,7 +15,9 @@ class SessionsController < ApplicationController
     # DELETE '/logout'
     def destroy
       if current_user
-        session.clear
+        current_user = nil
+        session.delete :user_id
+        head :no_content
       else
         render json: { errors: "No active session" }, status: :unauthorized
       end
