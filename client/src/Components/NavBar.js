@@ -13,6 +13,7 @@ import {useState} from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import Typography from '@mui/material/Typography'
 
 
 
@@ -92,7 +93,7 @@ function NavBar({handleLogged, isLoggedIn}) {
                   variant="h6"
                   noWrap
                   component="div"
-                  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}></Typography>
                   <Tooltip title="Create a New Post">
                   <IconButton
                   size="large"
@@ -102,7 +103,7 @@ function NavBar({handleLogged, isLoggedIn}) {
                   sx={{ mr: 2 }}
                 >
                   <PostForm />
-              
+    
                   </IconButton>
                   </Tooltip >
                   <IconButton>

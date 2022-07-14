@@ -13,7 +13,7 @@ import { deepPurple } from '@mui/material/colors';
 
 
 function PostCard({onDeletePost, post, setSelectedPost, onClickPost}) {
-const {id, title, content, xp, views} = postList;
+const {id, title, content, xp, views} = post;
 
 const [isUp, setIsUp] = useState("")
 const [isDown, setIsDown]= useState("")
