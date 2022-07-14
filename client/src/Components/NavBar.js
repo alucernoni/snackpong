@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function NavBar({handleLogged, isLoggedIn, handleAddPost}) {
+function NavBar({handleLogged, isLoggedIn, handleAddPost, user}) {
 
   
 
@@ -103,7 +103,8 @@ function NavBar({handleLogged, isLoggedIn, handleAddPost}) {
                   sx={{ mr: 2 }}
                 >
                   <PostForm 
-                  handleAddPost= {handleAddPost} />
+                  handleAddPost= {handleAddPost} user={user}
+                  />
               
                   </IconButton>
                   </Tooltip >

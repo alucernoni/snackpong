@@ -13,7 +13,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Link from '@mui/material/Link';
 import { ImageListItem } from '@mui/material';
 
-function PostForm({ handleAddPost}) {
+function PostForm({ handleAddPost, user}) {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -31,6 +31,7 @@ function PostForm({ handleAddPost}) {
           body: JSON.stringify({
             title: title,
             content: content,
+            user_id: user.id
             // image: image
           }),
         })

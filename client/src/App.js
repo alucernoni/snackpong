@@ -25,6 +25,15 @@ function App() {
   }
 
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    fetch('/me').then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => setUser(user))
+      }
+    })
+  }, [])
 
   useEffect(() => {
     fetch("/snacks_posts/")
@@ -61,7 +70,7 @@ function App() {
   return (
     <div className="App">
       <NavBar handleLogged={handleLogged} isLoggedIn={isLoggedIn}
-        handleAddPost={handleAddPost}
+        handleAddPost={handleAddPost} user={user}
       />
     <Routes>
       <Route path="/" element={<HomePage onClickPost={onClickPost}
