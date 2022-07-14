@@ -37,14 +37,18 @@ function LoginPage({onLogin}) {
         setIsLoading(false)
         if (res.ok) {
           res.json().then((user) => onLogin(user))
+          navigate('/homepage')
         } else {
-          res.json().then((err) => setErrors(err.errors))
+          res.json().then((err) => {
+            console.log(err)
+            setErrors(err.errors)})
+          navigate('/')
         }
       })
-      navigate('/homepage')
+      
   }
 
-  const handleSignInButton = (e) => {
+  const handleSignUpButton = (e) => {
     navigate('/signup')
   }
 
@@ -66,7 +70,7 @@ function LoginPage({onLogin}) {
       <h5>or</h5>
       {/* <br></br>
       <h5>If you are new to SnackPong</h5> */}
-      <Button onClick={handleSignInButton} variant="contained">Sign Up</Button>
+      <Button onClick={handleSignUpButton} variant="contained">Sign Up</Button>
       <Stack
       direction="column"
         justifyContent="center"
