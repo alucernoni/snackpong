@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import Card from '@mui/material/Card';
@@ -12,7 +11,7 @@ import { deepPurple } from '@mui/material/colors';
 
 
 
-function PostCard({onDeletePost, post, setSelectedPost, onClickPost}) {
+function PostCard({onDeletePost, post, onClickPost}) {
 const {id, title, content, xp, views} = post;
 
 const [isUp, setIsUp] = useState("")
@@ -44,9 +43,6 @@ function handleDeleteClick() {
     // setSelectedPost(post)
     onClickPost(post)
   }
-
-
-      
         return (
             <div className="post-cards">
             <React.Fragment>
