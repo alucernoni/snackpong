@@ -30,6 +30,15 @@ function App() {
   }
   
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    fetch('/me').then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => setUser(user))
+      }
+    })
+  }, [])
 
   useEffect(() => {
     fetch("/snacks_posts/")
