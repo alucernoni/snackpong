@@ -5,7 +5,6 @@ import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
 import PostForm from './PostForm';
 import {Link} from 'react-router-dom'
 import {useState, useEffect} from 'react';
@@ -16,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function NavBar({handleLogged, isLoggedIn, handleAddPost}) {
+function NavBar({handleAddPost, user}) {
 
   
 
@@ -78,8 +77,7 @@ function NavBar({handleLogged, isLoggedIn, handleAddPost}) {
         fetch('/logout', {
           method: "DELETE",
         })
-          navigate('/login')
-          handleLogged(isLoggedIn)
+          navigate('/')
       }
 //      
   return (
@@ -148,7 +146,7 @@ function NavBar({handleLogged, isLoggedIn, handleAddPost}) {
               </IconButton>
               </Tooltip>
 
-              {isLoggedIn === true ? <Tooltip title="Log Out"><LogoutIcon onClick={handleLogOut}/></Tooltip>: null}
+              {user ? <Tooltip title="Log Out"><LogoutIcon onClick={handleLogOut}/></Tooltip>: null}
 
               </Toolbar>
         </AppBar>

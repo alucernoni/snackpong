@@ -4,11 +4,15 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
 
 
-function LoginPage({handleLogged, isLoggedIn}) {
+
+function LoginPage({onLogin}) {
 
   const [loginInfo, setLoginInfo] = useState({username: "", password:""})
+  const [errors, setErrors] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -19,7 +23,7 @@ function LoginPage({handleLogged, isLoggedIn}) {
   const handleLogin = (e) => {
     e.preventDefault();
     loginUser(loginInfo)
-    handleLogged(isLoggedIn)
+    setIsLoading(true)
   }
 
   const navigate = useNavigate()
@@ -29,8 +33,15 @@ function LoginPage({handleLogged, isLoggedIn}) {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(loginInfo)
     })
-      .then(res => res.json())
-      navigate('/')
+      .then(res => {
+        setIsLoading(false)
+        if (res.ok) {
+          res.json().then((user) => onLogin(user))
+        } else {
+          res.json().then((err) => setErrors(err.errors))
+        }
+      })
+      navigate('/homepage')
   }
 
   const handleSignInButton = (e) => {
@@ -39,6 +50,7 @@ function LoginPage({handleLogged, isLoggedIn}) {
 
 
   return (
+    <>
      <form onSubmit={handleLogin}>
      <Stack
         direction="column"
@@ -55,10 +67,20 @@ function LoginPage({handleLogged, isLoggedIn}) {
       {/* <br></br>
       <h5>If you are new to SnackPong</h5> */}
       <Button onClick={handleSignInButton} variant="contained">Sign Up</Button>
+      <Stack
+      direction="column"
+        justifyContent="center"
+        alignItems="center" 
+        spacing={4}
+        style={{ minHeight: '50vh'}}>
+     {errors.map((err) => {
+     return <Alert severity="error">{`${err}`}</Alert>
+     })}
+      </Stack>
      
       </Stack>
       </form>
-   
+   </>
   )
 }
 
