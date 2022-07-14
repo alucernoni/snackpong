@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import Card from '@mui/material/Card';
@@ -12,8 +11,11 @@ import { deepPurple } from '@mui/material/colors';
 
 
 
-function PostCard({onDeletePost, post, onClickPost}) {
+function PostCard({onDeletePost, post, onClickPost, onUpdatePost}) {
 const {id, title, content, xp, views} = post;
+
+const [updatedTitle, setUpdatedTitle]= useState(title); 
+const [updatedContent, setUpdatedContent]= useState(content);
 
 const [isUp, setIsUp] = useState("")
 const [isDown, setIsDown]= useState("")
@@ -38,6 +40,21 @@ function handleDeleteClick() {
     method: "DELETE",
   });
   onDeletePost(id);  
+}
+
+function handlePostUpdate(e) {
+  e.preventDefault();
+  fetch(`/snacks_posts/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title: updatedTitle, content: updatedContent }),
+  })
+    .then((r) => r.json())
+    .then((updatedPost) => {
+      onUpdatePost(updatedPost);
+    });
 }
 
   const handleClick = () => {
@@ -91,6 +108,24 @@ function handleDeleteClick() {
               <DeleteIcon
               onClick= {handleDeleteClick}
               sx={{ color: deepPurple[200] }}/>
+
+                <form onSubmit={handlePostUpdate}>
+                  <input
+                    type="text"
+                    placeholder= {title}
+                    value={updatedTitle}
+                    onChange={(e) => setUpdatedTitle(e.target.value)}
+                  />
+                  <input
+                  type="text"
+                  placeholder= {content}
+                  value={updatedContent}
+                  onChange={(e) => setUpdatedContent(e.target.value)}
+                />
+                  <button type="submit">Update Post</button>
+                </form>
+
+
             </CardActions>
 
             <Box sx={{ minWidth: 275 }}>

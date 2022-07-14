@@ -11,31 +11,15 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Link from '@mui/material/Link';
+import { ImageListItem } from '@mui/material';
 
-function PostForm({ onAddPost}) {
+function PostForm({ handleAddPost}) {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState([]);
+//   const [image, setImage] = useState("");
 
-    // const initialPostData = {
-    //     id: "",
-    //     title: "",
-    //     content: "",
-    //     xp: "",
-    //     views: "",
-    //     comments: [],
-    //     replies: [],
-    // }
-
-    // const [formData, setFormData] = useState(initialPostData)
-
-    const history = useNavigate()
-
-    // const handleChange = (e) => {
-    //     const { id, value } = e.target
-    //     setFormData({ ...formData, [id]: value })
-    // }
+    // const history = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -47,14 +31,13 @@ function PostForm({ onAddPost}) {
           body: JSON.stringify({
             title: title,
             content: content,
-    
-            // image: image,
+            // image: image
           }),
         })
           .then((r) => r.json())
-          .then((newPost) => onAddPost(newPost));
+          .then((newPost) => 
+          handleAddPost(newPost))
       }
-
 
     const [open, setOpen] = React.useState(false);
 
@@ -68,10 +51,6 @@ function PostForm({ onAddPost}) {
 
     return (
         <div>
-
-            {/* <Button variant="outlined" onClick={handleClickOpen}>
-                New Snack!
-            </Button> */}
               <Link to='/' >
                   <img 
                   onClick= {handleClickOpen}
@@ -88,12 +67,16 @@ function PostForm({ onAddPost}) {
                     <DialogContentText>
                         Let's share a new snack! Please input the necessary information below.
                     </DialogContentText>
+                    <form onSubmit={handleSubmit} id="myform">
                     <TextField
                         autoFocus
                         margin="dense"
                         id="title"
+                        name= "title"
                         label="Title"
                         type="text"
+                        value= {title}
+                        onChange={(e) =>setTitle(e.target.value)}
                         fullWidth
                         variant="standard"
                     />
@@ -101,25 +84,36 @@ function PostForm({ onAddPost}) {
                         autoFocus
                         margin="dense"
                         id="content"
+                        name="content"
                         label="Content"
                         type="text"
+                        value= {content}
+                        onChange={(e) =>setContent(e.target.value)}
                         fullWidth
                         variant="standard"
                     />
-                    <TextField
+                    {/* <TextField
                         autoFocus
                         margin="dense"
                         id="upload-photo"
                         label="Image"
                         type="file"
+                        value= {image}
+                        onChange={(e) =>setImage(e.target.value)}
                         fullWidth
                         variant="standard"
-                    />
+                    /> */}
+                    </form>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
                 
-                    <Button onClick={handleSubmit}>Post!</Button>
+                    <Button
+                    type="submit"
+                    form="myform"
+                    // onSubmit={handleSubmit}
+                    onClick={handleClose}
+                    >Post!</Button>
                 </DialogActions>
             </Dialog>
 

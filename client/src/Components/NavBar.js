@@ -1,4 +1,3 @@
-
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import PostForm from './PostForm';
 import {Link} from 'react-router-dom'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
@@ -17,9 +16,11 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function NavBar({handleLogged, isLoggedIn}) {
+function NavBar({handleLogged, isLoggedIn, handleAddPost}) {
 
+  
 
+  
 
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
@@ -101,7 +102,8 @@ function NavBar({handleLogged, isLoggedIn}) {
                   aria-label="open drawer"
                   sx={{ mr: 2 }}
                 >
-                  <PostForm />
+                  <PostForm 
+                  handleAddPost= {handleAddPost} />
               
                   </IconButton>
                   </Tooltip >
