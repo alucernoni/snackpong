@@ -8,11 +8,11 @@ import { useNavigate } from 'react-router-dom';
 
 function LoginPage({handleLogged, isLoggedIn}) {
 
-  const [loginInfo, setLoginInfo] = useState("")
+  const [loginInfo, setLoginInfo] = useState({username: "", password:""})
 
   const handleChange = (e) => {
     const value = e.target.value;
-    const name = e.target.value;
+    const name = e.target.name;
     setLoginInfo({...loginInfo, [name]: value})
   }
 

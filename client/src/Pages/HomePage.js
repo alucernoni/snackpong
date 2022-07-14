@@ -3,7 +3,7 @@ import PostList from '../Components/PostList'
 
 
 
-function HomePage({setSelectedPost, onClickPost}) {
+function HomePage({ onClickPost}) {
 
     const [posts, setPosts] = useState([]);
 
@@ -46,9 +46,7 @@ function HomePage({setSelectedPost, onClickPost}) {
     <div>
         <PostList 
         posts= {posts}
-
         onDeletePost= {handleDeletePost}
-        setSelectedPost={setSelectedPost}
         onClickPost={onClickPost}
         />        
     </div>

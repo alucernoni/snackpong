@@ -12,8 +12,8 @@ import { deepPurple } from '@mui/material/colors';
 
 
 
-function PostCard({onDeletePost, post, setSelectedPost, onClickPost}) {
-const {id, title, content, xp, views} = postList;
+function PostCard({onDeletePost, post, onClickPost}) {
+const {id, title, content, xp, views} = post;
 
 const [isUp, setIsUp] = useState("")
 const [isDown, setIsDown]= useState("")
@@ -44,9 +44,6 @@ function handleDeleteClick() {
     // setSelectedPost(post)
     onClickPost(post)
   }
-
-
-      
         return (
             <div className="post-cards">
             <React.Fragment>

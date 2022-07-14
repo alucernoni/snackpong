@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom';
 
 function SignupPage({handleLogged, isLoggedIn}) {
 
-  const [signUpInfo, setSignUpInfo] = useState("")
+  const [signUpInfo, setSignUpInfo] = useState({username:"", password:"", password_confirmation:""})
 
   const handleChange = (e) => {
     const value = e.target.value;
-    const name = e.target.value;
+    const name = e.target.name;
     setSignUpInfo({...signUpInfo, [name]: value})
   }
 

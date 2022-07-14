@@ -28,12 +28,11 @@ function App() {
     <div className="App">
           <NavBar  handleLogged={handleLogged} isLoggedIn={isLoggedIn}/>
           <Routes>
-
           <Route exact path="/login" element={<LoginPage isLoggedIn={isLoggedIn} handleLogged={handleLogged}/>} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/new_post" element={<CreatePostPage />}/>
           <Route path="/post" element={<PostPage {...selectedPost}/>}/>
-          <Route path="/" element={<HomePage/>}/>
+          <Route path="/" element={<HomePage onClickPost={onClickPost}/>}/>
           <Route path="/signup" element={<SignUpPage  isLoggedIn={isLoggedIn} handleLogged={handleLogged}/>}/>
         </Routes>
     </div>

@@ -88,11 +88,11 @@ function NavBar({handleLogged, isLoggedIn}) {
 
             
                 
-                <Typography
+                {/* <Typography
                   variant="h6"
                   noWrap
                   component="div"
-                  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}> */}
                   <Tooltip title="Create a New Post">
                   <IconButton
                   size="large"
@@ -112,15 +112,13 @@ function NavBar({handleLogged, isLoggedIn}) {
                 onMouseOut={handleMouseOut} 
 
                 >
-                  {/* <img 
-                  // src="https://cdn-images-1.medium.com/max/1000/1*NpwRpbvvwz_dZRkvajFh8w.png"
-                  width={`${40}px`} 
-                  height={`${40}px`} 
+                  <img 
+                  src="https://cdn-images-1.medium.com/max/1000/1*KPDWqXSt-JYENe5T6tIRdg.png"
+                  width={`${100}px`} 
+                  height={`auto`} 
                   alt=""
-                  onMouseOver={handleMouseOver}
-                  onMouseOut={handleMouseOut}
-                   /> */}
-                   SnackPost
+                   />
+            
                   </Link>
                   </Tooltip>
                   </IconButton>
