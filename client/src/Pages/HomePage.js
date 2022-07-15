@@ -3,7 +3,7 @@ import PostList from '../Components/PostList'
 
 
 
-function HomePage({ onClickPost, handleAddPost, posts, onDeletePost, onUpdatePost}) {
+function HomePage({ onClickPost, handleAddPost, posts, onDeletePost, user}) {
 
     
   return (
@@ -13,12 +13,14 @@ function HomePage({ onClickPost, handleAddPost, posts, onDeletePost, onUpdatePos
         src= "https://cdn-images-1.medium.com/max/800/1*Ect67gIMsPmCG72cCFGXlA.png"/>  
         <PostList 
         posts= {posts}
+        user={user}
         handleAddPost= {handleAddPost}
         onDeletePost= {onDeletePost}
         onClickPost={onClickPost}
-        onUpdatePost={onUpdatePost}
-        />    
-       
+
+        />        
+
+
     </div>
   )
 }

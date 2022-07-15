@@ -2,7 +2,14 @@ import { Card, CardContent, CardActions, Box, Typography, Button, Stack} from '@
 import React from 'react'
 import ReplyList from './ReplyList'
 
-function CommentCard({commentContent, profileName, replies}) {
+function CommentCard({commentContent, profileName, id, onDeleteComment, replies}) {
+
+  function handleDeleteClick() {
+    fetch(`/comments/${id}`, {
+      method: "DELETE",
+    });
+    onDeleteComment(id);  
+  }
 
   return (
     <React.Fragment>
@@ -17,7 +24,7 @@ function CommentCard({commentContent, profileName, replies}) {
         </CardContent>
         <CardActions>
           {/* <Stack direction="row" justifyContent="flex-end" spacing="80" > */}
-            <Button variant="outlined" color="secondary">
+            <Button variant="outlined" color="secondary" onClick= {handleDeleteClick}>
               Delete Comment
             </Button>
           {/* </Stack> */}

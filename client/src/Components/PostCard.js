@@ -12,11 +12,10 @@ import Container from '@mui/material/Container';
 
 
 
+
 function PostCard({onDeletePost, post, onClickPost, onUpdatePost}) {
 const {id, title, content, xp, views, post_image_url} = post;
 
-const [updatedTitle, setUpdatedTitle]= useState(title); 
-const [updatedContent, setUpdatedContent]= useState(content);
 
 const [isUp, setIsUp] = useState("")
 const [isDown, setIsDown]= useState("")
@@ -43,24 +42,20 @@ function handleDeleteClick() {
   onDeletePost(id);  
 }
 
-function handlePostUpdate(e) {
-  e.preventDefault();
-  fetch(`/snacks_posts/${id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ title: updatedTitle, content: updatedContent }),
-  })
-    .then((r) => r.json())
-    .then((updatedPost) => {
-      onUpdatePost(updatedPost);
-    });
-}
-
   const handleClick = () => {
-    // setSelectedPost(post)
-    onClickPost(post)
+    const updatedViews= {
+      views: post.views + 1,
+    }
+
+    const config = {
+      method: "PATCH",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(updatedViews)
+    }
+
+    fetch(`/snacks_posts/${id}`, config)
+    .then(r=>r.json())
+    onClickPost(post.id)
   }
         return (
             <div className="post-cards">
@@ -117,27 +112,8 @@ function handlePostUpdate(e) {
               onClick= {handleDeleteClick}
               sx={{ color: deepPurple[200] }}/>
 
-                <form onSubmit={handlePostUpdate}>
-                  <input
-                    className="postcard-title-change"
-                    type="text"
-                    placeholder= "Let's Change the Title"
-                    value={updatedTitle}
-                    onChange={(e) => setUpdatedTitle(e.target.value)}
-                  />
-                  <input
-                  className="postcard-content-change"
-                  type="text"
-                  placeholder= "Oops, I made a mistake. Let's fix that"
-                  value={updatedContent}
-                  onChange={(e) => setUpdatedContent(e.target.value)}
-                />
-                  <button
-                  className="postcard-update-button"
-                  type="submit">Update Post</button>
-                </form>
 
-
+             
             </CardActions>
 
             <Box sx={{ minWidth: 275 }}>

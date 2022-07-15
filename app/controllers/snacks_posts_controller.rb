@@ -39,7 +39,7 @@ class SnacksPostsController < ApplicationController
     
 
     def post_params
-        params.permit(:title, :content)
+        params.permit(:title, :content, :views, :xp)
     end
 
 end

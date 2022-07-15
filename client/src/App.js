@@ -35,14 +35,7 @@ function App() {
     })
   }, [])
 
-
-
   const [selectedPost, setSelectedPost] = useState({})
-  
-  const onClickPost = (postObj) => {
-    setSelectedPost(postObj)
-  }
-  
   const [posts, setPosts] = useState([]);
   
 
@@ -83,6 +76,14 @@ function App() {
       }
     });
     setPosts(updatedPostsArray);
+    setSelectedPost(updatedPost)
+  }
+
+  const onClickPost = (postID) => {
+    const updatedViewsPost = posts.find(post => post.id === postID) 
+    console.log("updated views post", updatedViewsPost, updatedViewsPost.views)
+    updatedViewsPost.views =  updatedViewsPost.views + 1
+    setSelectedPost({...updatedViewsPost})
   }
 
   if (!user) return (
@@ -105,10 +106,19 @@ function App() {
     <Routes>      
          <Route path="/homepage" element={<HomePage onClickPost={onClickPost}
         posts={posts}
+        user={user}
         onDeletePost={handleDeletePost}
-        onUpdatePost={onUpdatePost}/>} />
+
+        />} 
+        />
+     
+        <Route path="/post" element={<PostPage {...selectedPost} onUpdatePost={onUpdatePost}/>} />
+        <Route path="/signup" element={<SignUpPage  onSignUp={setUser}/>} />
+
+       //onUpdatePost={onUpdatePost}/>} />
         <Route path="/profile" element={<Profile posts={posts} user={user}/>} />
-        <Route path="/post" element={<PostPage {...selectedPost} />} />
+        
+
       </Routes>
       </ThemeProvider >
     </div>
