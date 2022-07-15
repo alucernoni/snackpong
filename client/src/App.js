@@ -20,14 +20,7 @@ function App() {
     })
   }, [])
 
-
-
   const [selectedPost, setSelectedPost] = useState({})
-  
-  const onClickPost = (postObj) => {
-    setSelectedPost(postObj)
-  }
-  
   const [posts, setPosts] = useState([]);
   
 
@@ -70,6 +63,21 @@ function App() {
     setPosts(updatedPostsArray);
   }
 
+  const onClickPost = (postID) => {
+    const updatedViewsPost = posts.find(post => post.id === postID) 
+        // post.views = post.views + 1
+      // }   
+      // console.log("post.id???", post.id)   
+      // return post
+    console.log("updated views post", updatedViewsPost, updatedViewsPost.views)
+    updatedViewsPost.views =  updatedViewsPost.views + 1
+    setSelectedPost({...updatedViewsPost})
+  }
+
+  // const onAddView = (id) => {
+  //   const updatedViewPost = posts.find(post => post.id === id)
+  // }
+
   if (!user) return (
     <>
     <NavBar user={user}/>
@@ -91,8 +99,10 @@ function App() {
         <Route exact path="/" element={<LoginPage onLogin={setUser}  />} />
          <Route path="/homepage" element={<HomePage onClickPost={onClickPost}
         posts={posts}
+        user={user}
         onDeletePost={handleDeletePost}
-        onUpdatePost={onUpdatePost}/>} />
+        onUpdatePost={onUpdatePost}/>} 
+        />
         <Route path="/profile" element={<Profile user={user}/>} />
         <Route path="/post" element={<PostPage {...selectedPost} />} />
         <Route path="/signup" element={<SignUpPage  onSignUp={setUser}/>} />

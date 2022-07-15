@@ -11,7 +11,7 @@ import { deepPurple } from '@mui/material/colors';
 
 
 
-function PostCard({onDeletePost, post, onClickPost, onUpdatePost}) {
+function PostCard({onDeletePost, post, user, onClickPost, onUpdatePost, onAddView}) {
 const {id, title, content, xp, views} = post;
 
 const [updatedTitle, setUpdatedTitle]= useState(title); 
@@ -57,9 +57,21 @@ function handlePostUpdate(e) {
     });
 }
 
+
   const handleClick = () => {
-    // setSelectedPost(post)
-    onClickPost(post)
+    const updatedViews= {
+      views: post.views + 1,
+    }
+
+    const config = {
+      method: "PATCH",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(updatedViews)
+    }
+
+    fetch(`/snacks_posts/${id}`, config)
+    .then(r=>r.json())
+    onClickPost(post.id)
   }
         return (
             <div className="post-cards">
