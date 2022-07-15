@@ -8,11 +8,12 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deepPurple } from '@mui/material/colors';
+import Container from '@mui/material/Container';
 
 
 
 function PostCard({onDeletePost, post, onClickPost, onUpdatePost}) {
-const {id, title, content, xp, views} = post;
+const {id, title, content, xp, views, post_image_url} = post;
 
 const [updatedTitle, setUpdatedTitle]= useState(title); 
 const [updatedContent, setUpdatedContent]= useState(content);
@@ -65,6 +66,11 @@ function handlePostUpdate(e) {
             <div className="post-cards">
             <React.Fragment>
             <CardContent>
+              <Container>
+                <img
+                alt=""
+                src={post.post_image_url}/> 
+                </Container>    
               <Link to= "/post" style={{textDecoration: 'none'}}>
                   <Typography variant="h6" component="div" onClick={handleClick}>
                   {post.title}
@@ -73,7 +79,8 @@ function handlePostUpdate(e) {
               <Link to= "/post" style={{textDecoration: 'none'}}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom onClick={handleClick}>
                 {post.content}
-                </Typography>     
+                </Typography>
+               
               </Link>
               <Typography sx={{ mb: 0 }} color="text.secondary">
                 <img 
