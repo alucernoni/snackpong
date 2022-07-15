@@ -66,18 +66,10 @@ function App() {
 
   const onClickPost = (postID) => {
     const updatedViewsPost = posts.find(post => post.id === postID) 
-        // post.views = post.views + 1
-      // }   
-      // console.log("post.id???", post.id)   
-      // return post
     console.log("updated views post", updatedViewsPost, updatedViewsPost.views)
     updatedViewsPost.views =  updatedViewsPost.views + 1
     setSelectedPost({...updatedViewsPost})
   }
-
-  // const onAddView = (id) => {
-  //   const updatedViewPost = posts.find(post => post.id === id)
-  // }
 
   if (!user) return (
     <>
