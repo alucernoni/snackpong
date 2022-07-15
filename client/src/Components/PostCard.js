@@ -106,23 +106,28 @@ function handlePostUpdate(e) {
               alt=""/>
               </Button>
               <DeleteIcon
+              className="postcard-trash-button"
               onClick= {handleDeleteClick}
               sx={{ color: deepPurple[200] }}/>
 
                 <form onSubmit={handlePostUpdate}>
                   <input
+                    className="postcard-title-change"
                     type="text"
-                    placeholder= {title}
+                    placeholder= "Let's Change the Title"
                     value={updatedTitle}
                     onChange={(e) => setUpdatedTitle(e.target.value)}
                   />
                   <input
+                  className="postcard-content-change"
                   type="text"
-                  placeholder= {content}
+                  placeholder= "Oops, I made a mistake. Let's fix that"
                   value={updatedContent}
                   onChange={(e) => setUpdatedContent(e.target.value)}
                 />
-                  <button type="submit">Update Post</button>
+                  <button
+                  className="postcard-update-button"
+                  type="submit">Update Post</button>
                 </form>
 
 
