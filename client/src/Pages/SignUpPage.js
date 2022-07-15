@@ -50,6 +50,7 @@ function SignupPage({onSignUp}) {
     <Stack direction="row"
      justifyContent="center">
      <img 
+     alt=""
      className="signup-left-pic"
      src= "https://cdn-images-1.medium.com/max/800/1*1qtwaTyAPAftfqV4-Bj6IQ.png" />
 
@@ -63,13 +64,15 @@ function SignupPage({onSignUp}) {
         >
 
       <img 
+      alt=""
       className= "signup-logo" 
       src="https://cdn-images-1.medium.com/max/800/1*CX7mis8ChSe57sej3GHreQ.png" />
          
        <TextField id="outlined-basic" name="username" value={signUpInfo.username} label="Username" variant="outlined" onChange={handleChange}/>
 
       <TextField id="outlined-basic" name="password" value={signUpInfo.password} label="Password" variant="outlined" type="password" onChange={handleChange}/>
-
+      <p><small>At least 8 characters, must contain at least one lower-case letter</small></p>
+      <p><small>one upper-case letter, one digit and a special character</small></p>
       <TextField id="outlined-basic" name="password_confirmation" value={signUpInfo.password_confirmation} label="Password Confirmation" variant="outlined" type="password" onChange={handleChange}/>
 
       <Stack
@@ -82,6 +85,7 @@ function SignupPage({onSignUp}) {
       </Stack>
 
       <img 
+      alt=""
       className= "signup-right-pic" 
       src="https://cdn-images-1.medium.com/max/800/1*3cHw9iEz5Pw9wSYx6QeEBA.png" />
     </Stack>

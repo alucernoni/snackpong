@@ -30,3 +30,26 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 node_modules
+
+/intializer/unsplash.rb
+
+development: 
+  cloud_name: "dxzmccchh"
+  api_key: "328271559299758"
+  api_secret: "lsHNBkk3soclDR9FK-LUQy7LktQ"
+  secure: true
+
+production:
+  cloud_name: "dxzmccchh"
+  api_key: "328271559299758"
+  api_secret: "lsHNBkk3soclDR9FK-LUQy7LktQ"
+  secure:true
+
+<CloudinaryContext cloudName="dxzmccchh">
+  <div>
+    <Image publicId="sample" width="50" />
+  </div>
+  <Image publicId="sample" width="0.5" />
+</CloudinaryContext>
+
+Cloudinary::Uploader.upload("https://cdn-images-1.medium.com/max/1000/1*cBDcE5qLaH-K1zx5NGA9Jw.jpeg")

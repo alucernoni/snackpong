@@ -107,7 +107,7 @@ function App() {
         posts={posts}
         onDeletePost={handleDeletePost}
         onUpdatePost={onUpdatePost}/>} />
-        <Route path="/profile" element={<Profile user={user}/>} />
+        <Route path="/profile" element={<Profile posts={posts} user={user}/>} />
         <Route path="/post" element={<PostPage {...selectedPost} />} />
       </Routes>
       </ThemeProvider >

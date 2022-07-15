@@ -30,7 +30,7 @@ danko = User.create(
     password_confirmation:"12345678", 
     admin: true,
     profile_name: "Zirael", 
-    profile_image_url: Faker::Placeholdit.image, 
+    profile_image_url: "https://cdn-images-1.medium.com/max/1000/1*cBDcE5qLaH-K1zx5NGA9Jw.jpeg", 
     bio: "THE CROATIAN SENSATION")
    
 
@@ -65,10 +65,21 @@ leah = User.create(
         bio: Faker::Hacker.say_something_smart)
 end
 
+5.times do 
+    SnacksPost.create(
+        title: Faker::Game.title, 
+        content:Faker::TvShows::BojackHorseman.quote, 
+        post_image_url: Unsplash::Photo.random.urls.small,
+        xp: rand(1..1000), 
+        views: rand(1..10000),
+        user_id: 1)
+end
+
 10.times do
     SnacksPost.create(
         title: Faker::Beer.style, 
         content:Faker::TvShows::HowIMetYourMother.quote, 
+        post_image_url: Unsplash::Photo.random.urls.small,
         xp: rand(1..1000), 
         views: rand(1..10000),
         user_id: User.ids.sample)
