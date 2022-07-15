@@ -40,7 +40,6 @@ function LoginPage({onLogin}) {
           navigate('/homepage')
         } else {
           res.json().then((err) => {
-            console.log(err)
             setErrors(err.errors)})
           navigate('/')
         }
@@ -80,6 +79,7 @@ function LoginPage({onLogin}) {
        <TextField id="outlined-basic" name="username" value={loginInfo.username} label="Username" variant="outlined" onChange={handleChange}/>
       <TextField id="outlined-basic" name="password" value={loginInfo.password} label="Password" variant="outlined" type="password" onChange={handleChange}/>
 
+
       <Stack
       direction="row"
       spacing={2}
@@ -100,6 +100,7 @@ function LoginPage({onLogin}) {
       className= "login-right-pic" 
       src="https://cdn-images-1.medium.com/max/800/1*3cHw9iEz5Pw9wSYx6QeEBA.png" />
     </Stack>
+
 
       <Stack
       direction="column"

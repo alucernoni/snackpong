@@ -1,5 +1,11 @@
 .App {
-  text-align: center;
+text-align: center;
+background-image: url(https://cdn-images-1.medium.com/max/1000/1*4OcCLJDmxwQV6cJcItb4kw.png);
+background-size: cover;;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment:fixed;
 }
 
 .App-logo {
