@@ -59,3 +59,62 @@
   height: auto;
   padding-left: 5px;
 }
+
+/* LOGIN PAGE  */
+
+.login-left-pic {
+  padding-top: 230px;
+  padding-right: 10px;
+  float: left;
+  height: 180px;
+  width: auto;
+}
+
+.login-logo {
+  width: 200px;
+  height: auto;
+}
+
+.login-right-pic {
+  /* padding-top: 40px;
+  padding-left: 100px; */
+  padding-top: 235px;
+  padding-left: 10px;
+  float: right;
+  height: 171px;
+  width: auto;
+}
+
+.login-stack {
+  padding-top: 30px;
+}
+
+/* SIGN UP PAGE  */
+
+.signup-left-pic {
+  padding-top: 250px;
+  padding-right: 10px;
+  float: left;
+  height: 180px;
+  width: auto;
+}
+
+.signup-stack {
+  padding-top: 30px;
+}
+
+.signup-logo {
+  width: auto;
+  height: 50px;
+}
+
+.signup-right-pic {
+  /* padding-top: 40px;
+  padding-left: 100px; */
+  padding-top: 235px;
+  padding-left: 10px;
+  float: right;
+  height: 171px;
+  width: auto;
+}
+

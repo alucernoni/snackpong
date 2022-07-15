@@ -72,15 +72,12 @@ function App() {
 
   if (!user) return (
     <>
-    <NavBar user={user}/>
-  <LoginPage onLogin={setUser}/>  
- </>)
- 
- if (!user) return (
-  <>
-   <NavBar user={user}/> < SignUpPage onSignUp={setUser}/>
-  </> 
- )
+      <NavBar user={user} setUser={setUser} />
+      <Routes>
+        <Route exact path="/" element={<LoginPage onLogin={setUser} />} />
+        <Route path="/signup" element={<SignUpPage onSignUp={setUser} />} />
+      </Routes>
+    </>)
 
   return (
     <div className="App">
