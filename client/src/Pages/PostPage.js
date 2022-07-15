@@ -109,7 +109,7 @@ const color= deepPurple[200];
                 />
                   <button type="submit">Update Post</button>
                 </form>
-                <Button variant="outlined" color="success" onClick= {handleClickOpen}>
+                <Button variant="outlined" color="secondary" onClick= {handleClickOpen}>
                     Add a new comment
                 </Button>
                 <Dialog open={open} onClose={handleClose}>
@@ -145,11 +145,6 @@ const color= deepPurple[200];
                   </DialogActions>
                 </Dialog>
                  <Typography sx={{ mb: 0, fontSize: 20 }} color="text.secondary">
-
-               // <Button variant="outlined" color="secondary">
-                 //   Add a new comment
-             //   </Button>
-              //   <Typography sx={{ mb: 0, fontSize: 15 }} color="text.secondary">
 
                   {views} views
                  </Typography> 
