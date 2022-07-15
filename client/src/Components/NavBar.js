@@ -11,6 +11,9 @@ import {useState, useEffect} from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+
+
 
 
 
@@ -76,26 +79,17 @@ function NavBar({handleAddPost, user, setUser}) {
         setUser(null)
           navigate('/')
       }
+
+
 //      
   return (
-    <Stack>
-        <AppBar position= "static">
-                <Toolbar>                  
-                  <Tooltip title="Create a New Post">
-                  <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="open drawer"
-                  sx={{ mr: 2 }}
-                  disabled={user ? false : true}
-                >
-                  <PostForm 
-                  handleAddPost= {handleAddPost} user={user}
-                  />              
-                  </IconButton>
-                  </Tooltip >
-                  <IconButton disabled={user ? false : true}>
+
+          <AppBar position= "static">
+                <Stack justifyContent="space-between" direction="row">
+                <Stack direction="row" alignItems="center" justifyContent="flex-start">              
+                <IconButton
+                sx={{margin:"auto" }}
+                 disabled={user ? false : true}>
                 <Tooltip title="Home">
                 <Link to='/homepage'
                 onMouseOver={handleMouseOver}
@@ -110,6 +104,22 @@ function NavBar({handleAddPost, user, setUser}) {
                   </Link>
                   </Tooltip>
                   </IconButton>
+                  <Tooltip title="Create a New Post">
+                  <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                  sx={{ margin:"auto" }}
+                  disabled={user ? false : true}
+                >
+                  <PostForm 
+                  handleAddPost= {handleAddPost} user={user}
+                  />              
+                  </IconButton>
+                  </Tooltip >
+                </Stack>
+                <Stack direction="row" alignItems="center" justifyContent="flex-end">
                 <Search disabled={user ? false : true}>
                   <SearchIconWrapper>
                     <SearchIcon />
@@ -120,8 +130,10 @@ function NavBar({handleAddPost, user, setUser}) {
                   />
                 </Search>
                 <Tooltip title="Profile">
-                <IconButton disabled={user ? false : true}>
-                <Link to='/profile' >
+                <IconButton 
+                // sx={{mr: 3}}
+                disabled={user ? false : true}>
+                 <Link to='/profile' >
                   <img 
                   src="https://cdn-images-1.medium.com/max/1000/1*ASmjaK0nkjEB3y5s0TgZSg.png"
                   width={`${40}px`} 
@@ -134,10 +146,10 @@ function NavBar({handleAddPost, user, setUser}) {
               </IconButton>
               </Tooltip>
               {user ? <Tooltip title="Log Out"><LogoutIcon onClick={handleLogOut}/></Tooltip>: null}
-
-              </Toolbar>
+              </Stack> 
+              </Stack> 
         </AppBar>
-   </Stack> 
+    
   )
 }
 

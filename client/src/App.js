@@ -7,8 +7,23 @@ import SignUpPage from './Pages/SignUpPage'
 import NavBar from './Components/NavBar'
 import PostPage from './Pages/PostPage';
 import {useState, useEffect} from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { deepPurple} from '@mui/material/colors'
+
+
+
 
 function App() {
+
+  const theme = createTheme({
+      palette: {
+        primary: {
+          main: '#33eaff',
+        },
+        secondary: deepPurple,
+      },
+    })
+
 
   const [user, setUser] = useState(null)
 
@@ -73,33 +88,39 @@ function App() {
 
   if (!user) return (
     <>
-    <NavBar user={user}/>
-  <LoginPage onLogin={setUser}/>  
+
+    <NavBar user={user} setUser={setUser}/>
+  <Routes>
+  <Route exact path="/" element={<LoginPage onLogin={setUser}  />} />
+  <Route path="/signup" element={<SignUpPage  onSignUp={setUser}/>} />
+    </Routes>   
  </>)
- 
- if (!user) return (
-  <>
-   <NavBar user={user}/> < SignUpPage onSignUp={setUser}/>
-  </> 
- )
 
   return (
-    <div className="App">
+ 
+    <div className="App">   
+    <ThemeProvider theme={theme}>
       <NavBar 
         handleAddPost={handleAddPost} user={user} setUser={setUser}
       />
     <Routes>      
-        <Route exact path="/" element={<LoginPage onLogin={setUser}  />} />
          <Route path="/homepage" element={<HomePage onClickPost={onClickPost}
         posts={posts}
         user={user}
         onDeletePost={handleDeletePost}
+
         />} 
         />
-        <Route path="/profile" element={<Profile user={user}/>} />
+     
         <Route path="/post" element={<PostPage {...selectedPost} onUpdatePost={onUpdatePost}/>} />
         <Route path="/signup" element={<SignUpPage  onSignUp={setUser}/>} />
+
+       //onUpdatePost={onUpdatePost}/>} />
+        <Route path="/profile" element={<Profile posts={posts} user={user}/>} />
+        
+
       </Routes>
+      </ThemeProvider >
     </div>
   );
 }
