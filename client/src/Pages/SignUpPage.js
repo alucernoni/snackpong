@@ -35,11 +35,13 @@ function SignupPage({onSignUp}) {
       setIsLoading(false)
       if (res.ok) {
         res.json().then((user) => onSignUp(user))
+        navigate('/homepage')
       } else {
-        res.json().then((err) => setErrors(err.errors))
+        res.json().then((err) => setErrors(err.errors))  
+        navigate('/signup')
       }
     })
-      navigate('/homepage')
+    
   }
 
   return (

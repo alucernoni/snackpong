@@ -40,7 +40,6 @@ function LoginPage({onLogin}) {
           navigate('/homepage')
         } else {
           res.json().then((err) => {
-            console.log(err)
             setErrors(err.errors)})
           navigate('/')
         }
@@ -67,9 +66,7 @@ function LoginPage({onLogin}) {
        <TextField id="outlined-basic" name="username" value={loginInfo.username} label="Username" variant="outlined" onChange={handleChange}/>
       <TextField id="outlined-basic" name="password" value={loginInfo.password} label="Password" variant="outlined" type="password" onChange={handleChange}/>
       <Button type="submit" variant="contained">Login</Button> 
-      <h5>or</h5>
-      {/* <br></br>
-      <h5>If you are new to SnackPong</h5> */}
+      <h5>New to SnackPong?</h5>
       <Button onClick={handleSignUpButton} variant="contained">Sign Up</Button>
       <Stack
       direction="column"
