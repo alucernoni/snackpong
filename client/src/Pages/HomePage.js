@@ -3,7 +3,7 @@ import PostList from '../Components/PostList'
 
 
 
-function HomePage({ onClickPost, handleAddPost, posts, onDeletePost, onUpdatePost, onAddView, user}) {
+function HomePage({ onClickPost, handleAddPost, posts, onDeletePost, user}) {
 
     
   return (
@@ -14,8 +14,6 @@ function HomePage({ onClickPost, handleAddPost, posts, onDeletePost, onUpdatePos
         handleAddPost= {handleAddPost}
         onDeletePost= {onDeletePost}
         onClickPost={onClickPost}
-        onUpdatePost={onUpdatePost}
-        onAddView={onAddView}
         />        
     </div>
   )

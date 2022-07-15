@@ -3,7 +3,7 @@ import PostPage from '../Pages/PostPage'
 import PostCard from './PostCard'
 
 
-function PostList({posts, onDeletePost, setSelectedPost, onClickPost, onUpdatePost, onAddView, user}) {
+function PostList({posts, onDeletePost, setSelectedPost, onClickPost, user}) {
 
 
 
@@ -21,8 +21,6 @@ function PostList({posts, onDeletePost, setSelectedPost, onClickPost, onUpdatePo
                 user={user}
                 setSelectedPost={setSelectedPost}
                 onClickPost={onClickPost}
-                onUpdatePost={onUpdatePost}
-                onAddView={onAddView}
               />
             );
           })

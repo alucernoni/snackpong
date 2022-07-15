@@ -61,6 +61,7 @@ function App() {
       }
     });
     setPosts(updatedPostsArray);
+    setSelectedPost(updatedPost)
   }
 
   const onClickPost = (postID) => {
@@ -101,10 +102,10 @@ function App() {
         posts={posts}
         user={user}
         onDeletePost={handleDeletePost}
-        onUpdatePost={onUpdatePost}/>} 
+        />} 
         />
         <Route path="/profile" element={<Profile user={user}/>} />
-        <Route path="/post" element={<PostPage {...selectedPost} />} />
+        <Route path="/post" element={<PostPage {...selectedPost} onUpdatePost={onUpdatePost}/>} />
         <Route path="/signup" element={<SignUpPage  onSignUp={setUser}/>} />
       </Routes>
     </div>
