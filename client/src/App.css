@@ -1,6 +1,6 @@
 .App {
 text-align: center;
-background-image: url(https://cdn-images-1.medium.com/max/1000/1*4OcCLJDmxwQV6cJcItb4kw.png);
+/* background-image: url(https://cdn-images-1.medium.com/max/1000/1*4OcCLJDmxwQV6cJcItb4kw.png); */
 background-size: cover;;
 background-position: center;
 background-repeat: no-repeat;
@@ -43,6 +43,17 @@ background-attachment:fixed;
   }
 }
 
+/* HOME PAGE */
+.homepage-image {
+  float: right;
+  padding-top: 10px;
+  width: 53%;
+  background-attachment: scroll;
+}
+
+
+/* POST CARDS */
+
 .post-cards {
   width: 500px;
   height: auto;
@@ -52,6 +63,10 @@ background-attachment:fixed;
   width: 20px;
   height: auto;
   padding-left: 5px;
+}
+
+.postcard-trash-button {
+  padding-left: 10px;
 }
 
 .xp-up {
@@ -64,6 +79,34 @@ background-attachment:fixed;
   width: 20px;
   height: auto;
   padding-left: 5px;
+}
+
+.postcard-update-button {
+  background-color: rgba(155, 79, 243, 0.1);
+  border: solid rgb(145, 230, 241) 1.5px;
+  border-radius: 5px;
+  width: 200px;
+  cursor: pointer;
+  color: black;
+  height: 19px;
+}
+
+.postcard-title-change {
+  border: solid rgb(145, 230, 241) 1.5px;
+  border-radius: 5px;
+  background-color: rgba(155, 79, 243, 0.1);
+  color: black;
+  height: 15px;
+  margin-right: 3px;
+  color: rgb(174, 171, 171);
+}
+
+.postcard-content-change {
+  border: solid rgb(145, 230, 241) 1.5px;
+  border-radius: 5px;
+  background-color: rgba(155, 79, 243, 0.1);
+  height: 15px;
+  color: rgb(174, 171, 171)
 }
 
 /* LOGIN PAGE  */
