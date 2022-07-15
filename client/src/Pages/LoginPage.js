@@ -54,20 +54,54 @@ function LoginPage({onLogin}) {
 
   return (
     <>
+     
      <form onSubmit={handleLogin}>
+
+     <Stack direction="row"
+     justifyContent="center">
+     <img 
+     className="login-left-pic"
+     src= "https://cdn-images-1.medium.com/max/800/1*1qtwaTyAPAftfqV4-Bj6IQ.png" />
+
      <Stack
+     className="login-stack"
         direction="column"
         justifyContent="center"
         alignItems="center" 
-        spacing={4}
+        spacing={2}
         style={{ minHeight: '50vh'}}
         >
-         
+      
+      <img 
+      className= "login-logo" 
+      src="https://cdn-images-1.medium.com/max/800/1*KPDWqXSt-JYENe5T6tIRdg.png" />
+
        <TextField id="outlined-basic" name="username" value={loginInfo.username} label="Username" variant="outlined" onChange={handleChange}/>
       <TextField id="outlined-basic" name="password" value={loginInfo.password} label="Password" variant="outlined" type="password" onChange={handleChange}/>
-      <Button type="submit" variant="contained">Login</Button> 
-      <h5>New to SnackPong?</h5>
-      <Button onClick={handleSignUpButton} variant="contained">Sign Up</Button>
+
+
+      <Stack
+      direction="row"
+      spacing={2}
+      style={{ minHeight: '2vh'}}>
+      <Button 
+      type="submit"
+      variant="contained">Login</Button> 
+      
+      {/* <br></br>
+      <h5>If you are new to SnackPong</h5> */}
+      <Button onClick={handleSignUpButton} variant="contained">Sign Me Up!</Button>
+      </Stack>
+
+      </Stack>
+
+      
+      <img 
+      className= "login-right-pic" 
+      src="https://cdn-images-1.medium.com/max/800/1*3cHw9iEz5Pw9wSYx6QeEBA.png" />
+    </Stack>
+
+
       <Stack
       direction="column"
         justifyContent="center"
@@ -78,9 +112,10 @@ function LoginPage({onLogin}) {
      return <Alert severity="error">{`${err}`}</Alert>
      })}
       </Stack>
-     
-      </Stack>
+      
+      
       </form>
+      
    </>
   )
 }

@@ -87,13 +87,13 @@ function App() {
 
   if (!user) return (
     <>
+
     <NavBar user={user} setUser={setUser}/>
   <Routes>
   <Route exact path="/" element={<LoginPage onLogin={setUser}  />} />
   <Route path="/signup" element={<SignUpPage  onSignUp={setUser}/>} />
     </Routes>   
  </>)
-
 
   return (
  
